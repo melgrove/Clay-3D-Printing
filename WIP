@@ -1,0 +1,91 @@
+
+import numpy as np
+import math
+
+xlayer = []
+ylayer = []
+zlayer = []
+
+def draw_circle(x,y,height,gran):
+    numerical_height = 80
+    new_layer_var = 0
+    global increment
+    global globalgran
+    globalgran = gran
+    while height >= 1:
+        if new_layer_var >= 1:
+            xlayer.append(xlayer[gran - 1])
+            ylayer.append(ylayer[gran - 1])
+            numerical_height = numerical_height + increment
+            zlayer.append(numerical_height)
+        def circle(radian,x,y):
+            return round(x*math.cos(radian),3), round(y*math.sin(radian),3)
+
+        for radian in np.linspace(0, 2*math.pi, gran):
+            (xval,yval) = (circle(radian,x,y))
+            xlayer.append(xval)
+            ylayer.append(yval)
+            zlayer.append(numerical_height)
+        height = height - 1
+        new_layer_var = new_layer_var + 1
+
+
+
+increment = 5
+height = 1
+gran = 360
+x = 10
+y = 20
+draw_circle(x,y,height,gran)
+
+n = 0
+for number in range(int(globalgran) * int(height)):
+    print('G1','X'+str(xlayer[0+n]), 'Y'+str(ylayer[0+n]), 'Z'+str(zlayer[0+n]))
+    n = n +1
+
+
+
+xbase = []
+ybase = []
+zbase = []
+
+current_coord = [0,20]
+a = 3
+
+while a<5:
+    
+    
+    
+    approx_yval = current_coord[1] - increment
+    #print(approx_yval)
+    new_yval = min(ylayer[, key=lambda y:abs(y-approx_yval))
+    print(new_yval)
+    
+    index_new_coord = ylayer.index(new_yval)
+    print(index_new_coord)
+    index_current_coord = ylayer.index(current_coord[1])
+    print(index_current_coord)
+    xbase.append(xlayer[index_current_coord:index_new_coord])
+    ybase.append(ylayer[index_current_coord:index_new_coord])
+    
+    new_xval = xlayer[index_new_coord]
+    print(new_xval)
+    new_coord = [new_xval,new_yval]
+    print(new_coord)
+    
+    new_coord[0] = -new_coord[0]
+    current_coord = new_coord
+    #xbase.append(
+    a = a + 1
+
+
+
+
+
+
+
+
+
+def circle(radian,x,y):
+            return round(x*math.cos(radian),3), round(y*math.sin(radian),3)
+
