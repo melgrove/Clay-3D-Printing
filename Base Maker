@@ -1,0 +1,38 @@
+flipper = 1
+
+
+xbase = []
+ybase = []
+a = 80
+b = 50
+increment = 5
+base_height = 80
+
+
+x = -a
+
+while x <= a:
+    y = math.sqrt(b*b * (1 - (x * x)/(a * a)))
+    y = round(y,3)
+    if flipper == 1:
+        xbase.append(x)
+        ybase.append(y)
+        xbase.append(x)
+        ybase.append(-y)
+    elif flipper == -1:
+        xbase.append(x)
+        ybase.append(-y)
+        xbase.append(x)
+        ybase.append(y)
+    x = x + increment
+    flipper = -flipper
+
+
+if len(xbase) != len(ybase):
+    raise ValueError('xbase and ybase are not the same!')
+
+
+n = 0
+for n in range(len(xbase)):
+    print('G1','X'+str(xbase[0+n]), 'Y'+str(ybase[0+n]), 'Z'+str(base_height))
+    n = n +1
