@@ -1,0 +1,71 @@
+import numpy as np
+import math
+
+flipper = 1
+
+
+
+a = 25
+b = 50
+increment = 4
+base_increment = 5
+base_height = 60
+layers = 4
+gran = 90
+base_gran = 10
+
+x = -a
+xbase = []
+ybase = []
+
+while x <= a:
+    y = math.sqrt(b*b * (1 - (x * x)/(a * a)))
+    y = round(y,3)
+    if flipper == 1:
+        xbase.append(x)
+        ybase.append(y)
+        xbase.append(x)
+        ybase.append(-y)
+    elif flipper == -1:
+        xbase.append(x)
+        ybase.append(-y)
+        xbase.append(x)
+        ybase.append(y)
+        
+    if (x+base_increment > a):
+        break 
+    
+    X = x
+    count = 0
+
+    while (count < base_gran):
+        
+        X = X + (base_increment/base_gran)
+        
+        
+        y = math.sqrt(b*b * (1 - (X * X)/(a * a)))
+        y = round(y,3)
+        X = round(X,3)
+        if flipper == 1:
+            xbase.append(X)
+            ybase.append(-y)
+        elif flipper == -1:
+            xbase.append(X)
+            ybase.append(y)
+        
+        count = count + 1
+
+    x = x + (base_increment)
+
+    
+    flipper = -flipper
+
+
+if len(xbase) != len(ybase):
+    raise ValueError('xbase and ybase are not the same!')
+
+
+n = 0
+for n in range(len(xbase)):
+    print('G1','X'+str(ybase[0+n]), 'Y'+str(xbase[0+n]), 'Z'+str(base_height))
+    n = n +1
