@@ -24,7 +24,7 @@ y_increment[0:11] = [-1]*12
 y_increment[12] = 0
 y_increment[13:24] = [1]*12
 
-#this makes the x wider and y narrower on the bottom half and the x narrower and y wider on the top half
+#20-25 makes the x wider and y narrower on the bottom half and the x narrower and y wider on the top half
 
 x = -a
 xbase = []
